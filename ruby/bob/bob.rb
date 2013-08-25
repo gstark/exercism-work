@@ -1,7 +1,9 @@
 class Bob
   def hey(text)
-    message = Message.new(text)
+    respond(Message.new(text))
+  end
 
+  def respond(message)
     case
       when message.not_saying_anything? then "Fine. Be that way!"
       when message.yelling?             then "Woah, chill out!"
