@@ -10,6 +10,7 @@ class Phrase
     Hash[text.downcase.scan(/\w+/).group_by { |word| word }.map { |word, words| [word, words.size] }]
   end
 
+  # Logic and trying to be more expressive
   def word_count
     Hash[words_and_counts]
   end
