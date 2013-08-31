@@ -8,5 +8,4 @@ responseFor message
    | otherwise             = "Whatever."
    where endsWithQuestionMark = last message == '?'
          emptyMessage         = all isSpace message
-         yelling              = all (not . isLower) message
-
+         yelling              = all (not . isLower) message && any isAlpha message
