@@ -15,6 +15,6 @@ toListCount (word:rest) = [(word, 1 + length x)] ++ toListCount xs
 --         | otherwise = ' '
 --
 -- But I'm not sure which is more idiomatic Haskell
-wordCount phrase = fromList $ toListCount $ words $ map onlyAlphaNum (map toLower phrase)
+wordCount = (fromList . toListCount . words . map onlyAlphaNum . map toLower)
   where onlyAlphaNum = (\x -> if isAlphaNum x then x else ' ')
 
