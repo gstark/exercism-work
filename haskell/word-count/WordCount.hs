@@ -3,13 +3,10 @@ import Data.Char
 import Data.List
 import Data.Map (fromList)
 
-count [] = []
-count (word:rest) = [(word, 1 + length matches)] ++ count doesntMatch
-   where matches     = filter(== word) rest
-         doesntMatch = filter(/= word) rest
+toListCount [] = []
+toListCount (word:rest) = [(word, 1 + length x)] ++ toListCount xs
+   where (x, xs) = partition(== word) rest
 
-wordCount phrase = fromList $ count $ words $ map fixup phrase
-  where fixup x
-         | isAlpha x || isDigit x = toLower x
-         | otherwise = ' '
+wordCount phrase = fromList $ toListCount $ words $ map onlyAlphaNum (map toLower phrase)
+  where onlyAlphaNum = (\x -> if isAlphaNum x then x else ' ')
 
